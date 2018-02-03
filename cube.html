@@ -1,0 +1,639 @@
+<html>
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<title>Cube simulator</title>
+  <script type="text/javascript">
+  function hovershow(evt) { evt.style.opacity=1.0; }
+  function hoverfade(evt) { evt.style.opacity=0.5; }
+  function debug() {
+    arr=['a','b','c','d','e','f']
+    for (i=0; i<arr.length; i++) {
+      for (j=1; j<10; j++) {
+        n=document.getElementById(arr[i]+j.toString());
+        console.log(n.id+' '+n.classList[0]);
+      }
+    }
+  }
+  function init() {
+    for (i=1; i<10; i++) {
+      init_portion=document.getElementById('a'+i.toString());
+      init_portion.classList=['a'];
+    };
+    for (i=1; i<10; i++) {
+      init_portion=document.getElementById('b'+i.toString());
+      init_portion.classList=['b'];
+    };
+    for (i=1; i<10; i++) {
+      init_portion=document.getElementById('c'+i.toString());
+      init_portion.classList=['c'];
+    };
+    for (i=1; i<10; i++) {
+      init_portion=document.getElementById('d'+i.toString());
+      init_portion.classList=['d'];
+    };
+    for (i=1; i<10; i++) {
+      init_portion=document.getElementById('e'+i.toString());
+      init_portion.classList=['e'];
+    };
+    for (i=1; i<10; i++) {
+      init_portion=document.getElementById('f'+i.toString());
+      init_portion.classList=['f'];
+    };
+  }
+  var dontcheck = true;
+  var nevercheck = false;
+  function check() {
+    if (dontcheck) {return;}
+    var thisface = document.getElementById('a1').classList[0];
+    for (i=2; i<10; i++) {
+      if (document.getElementById('a'+i.toString()).classList != thisface) {return;}
+    };
+    var thisface = document.getElementById('b1').classList[0];
+    for (i=2; i<10; i++) {
+      if (document.getElementById('b'+i.toString()).classList != thisface) {return;}
+    };
+    var thisface = document.getElementById('c1').classList[0];
+    for (i=2; i<10; i++) {
+      if (document.getElementById('c'+i.toString()).classList != thisface) {return;}
+    };
+    var thisface = document.getElementById('d1').classList[0];
+    for (i=2; i<10; i++) {
+      if (document.getElementById('d'+i.toString()).classList != thisface) {return;}
+    };
+    var thisface = document.getElementById('e1').classList[0];
+    for (i=2; i<10; i++) {
+      if (document.getElementById('e'+i.toString()).classList != thisface) {return;}
+    };
+    var thisface = document.getElementById('f1').classList[0];
+    for (i=2; i<10; i++) {
+      if (document.getElementById('f'+i.toString()).classList != thisface) {return;}
+    };
+    alert('completed');
+    dontcheck=true;
+  }
+  function act1() {
+    var arr=[];
+    var srcs=['a1','a4','a7','c1','c4','c7','f1','f4','f7','e9','e6','e3'];
+    for (i=0; i<srcs.length; i++) {
+      arr.push(document.getElementById(srcs[i]).classList[0]);
+    }
+    for (i=0; i<srcs.length; i++) {
+      document.getElementById(srcs[i]).classList=arr[(i+3)%arr.length];
+    }
+    arr2=[]
+    srcs2=['b1','b2','b3','b6','b9','b8','b7','b4'];
+    for (j=0; j<srcs2.length; j++) {
+      arr2.push(document.getElementById(srcs2[j]).classList[0]);
+    }
+    for (j=0; j<srcs2.length; j++) {
+      document.getElementById(srcs2[j]).classList=arr2[(j+2)%arr2.length];
+    }
+    if (dontcheck || nevercheck) {
+      dontcheck=false;
+    } else {
+      check()
+    }
+  }
+  function act2() {
+    var arr=[];
+    var srcs=['a2','a5','a8','c2','c5','c8','f2','f5','f8','e8','e5','e2'];
+    for (i=0; i<srcs.length; i++) {
+      arr.push(document.getElementById(srcs[i]).classList[0]);
+    }
+    for (i=0; i<srcs.length; i++) {
+      document.getElementById(srcs[i]).classList=arr[(i+3)%arr.length];
+    }
+    if (dontcheck || nevercheck) {
+      dontcheck=false;
+    } else {
+      check()
+    }
+  }
+  function act3() {
+    var arr=[];
+    var srcs=['a3','a6','a9','c3','c6','c9','f3','f6','f9','e7','e4','e1'];
+    for (i=0; i<srcs.length; i++) {
+      arr.push(document.getElementById(srcs[i]).classList[0]);
+    }
+    for (i=0; i<srcs.length; i++) {
+      document.getElementById(srcs[i]).classList=arr[(i+3)%arr.length];
+    }
+    arr2=[]
+    srcs2=['d1','d2','d3','d6','d9','d8','d7','d4'];
+    for (j=0; j<srcs2.length; j++) {
+      arr2.push(document.getElementById(srcs2[j]).classList[0]);
+    }
+    for (j=0; j<srcs2.length; j++) {
+      document.getElementById(srcs2[j]).classList=arr2[(j-2+arr2.length)%arr2.length];
+    }
+    if (dontcheck || nevercheck) {
+      dontcheck=false;
+    } else {
+      check()
+    }
+  }
+  function act4() {
+    var arr=[];
+    var srcs=['a3','a2','a1','b1','b4','b7','f7','f8','f9','d9','d6','d3'];
+    for (i=0; i<srcs.length; i++) {
+      arr.push(document.getElementById(srcs[i]).classList[0]);
+    }
+    for (i=0; i<srcs.length; i++) {
+      document.getElementById(srcs[i]).classList=arr[(i+3)%arr.length];
+    }
+    arr2=[]
+    srcs2=['e1','e2','e3','e6','e9','e8','e7','e4'];
+    for (j=0; j<srcs2.length; j++) {
+      arr2.push(document.getElementById(srcs2[j]).classList[0]);
+    }
+    for (j=0; j<srcs2.length; j++) {
+      document.getElementById(srcs2[j]).classList=arr2[(j+2)%arr2.length];
+    }
+    if (dontcheck || nevercheck) {
+      dontcheck=false;
+    } else {
+      check()
+    }
+  }
+  function act5() {
+    var arr=[];
+    var srcs=['a6','a5','a4','b2','b5','b8','f4','f5','f6','d8','d5','d2'];
+    for (i=0; i<srcs.length; i++) {
+      arr.push(document.getElementById(srcs[i]).classList[0]);
+    }
+    for (i=0; i<srcs.length; i++) {
+      document.getElementById(srcs[i]).classList=arr[(i+3)%arr.length];
+    }
+    if (dontcheck || nevercheck) {
+      dontcheck=false;
+    } else {
+      check()
+    }
+  }
+  function act6() {
+    var arr=[];
+    var srcs=['a9','a8','a7','b3','b6','b9','f1','f2','f3','d7','d4','d1'];
+    for (i=0; i<srcs.length; i++) {
+      arr.push(document.getElementById(srcs[i]).classList[0]);
+    }
+    for (i=0; i<srcs.length; i++) {
+      document.getElementById(srcs[i]).classList=arr[(i+3)%arr.length];
+    }
+    arr2=[]
+    srcs2=['c1','c2','c3','c6','c9','c8','c7','c4'];
+    for (j=0; j<srcs2.length; j++) {
+      arr2.push(document.getElementById(srcs2[j]).classList[0]);
+    }
+    for (j=0; j<srcs2.length; j++) {
+      document.getElementById(srcs2[j]).classList=arr2[(j-2+arr2.length)%arr2.length];
+    }
+    if (dontcheck || nevercheck) {
+      dontcheck=false;
+    } else {
+      check()
+    }
+  }
+  function act7() {
+    var arr=[];
+    var srcs=['b1','b2','b3','c1','c2','c3','d1','d2','d3','e1','e2','e3'];
+    for (i=0; i<srcs.length; i++) {
+      arr.push(document.getElementById(srcs[i]).classList[0]);
+    }
+    for (i=0; i<srcs.length; i++) {
+      document.getElementById(srcs[i]).classList=arr[(i-3+arr.length)%arr.length];
+    }
+    arr2=[]
+    srcs2=['a1','a2','a3','a6','a9','a8','a7','a4'];
+    for (j=0; j<srcs2.length; j++) {
+      arr2.push(document.getElementById(srcs2[j]).classList[0]);
+    }
+    for (j=0; j<srcs2.length; j++) {
+      document.getElementById(srcs2[j]).classList=arr2[(j+2)%arr2.length];
+    }
+    if (dontcheck || nevercheck) {
+      dontcheck=false;
+    } else {
+      check()
+    }
+  }
+  function act8() {
+    var arr=[];
+    var srcs=['b4','b5','b6','c4','c5','c6','d4','d5','d6','e4','e5','e6'];
+    for (i=0; i<srcs.length; i++) {
+      arr.push(document.getElementById(srcs[i]).classList[0]);
+    }
+    for (i=0; i<srcs.length; i++) {
+      document.getElementById(srcs[i]).classList=arr[(i-3+arr.length)%arr.length];
+    }
+    if (dontcheck || nevercheck) {
+      dontcheck=false;
+    } else {
+      check()
+    }
+  }
+  function act9() {
+    var arr=[];
+    var srcs=['b7','b8','b9','c7','c8','c9','d7','d8','d9','e7','e8','e9'];
+    for (i=0; i<srcs.length; i++) {
+      arr.push(document.getElementById(srcs[i]).classList[0]);
+    }
+    for (i=0; i<srcs.length; i++) {
+      document.getElementById(srcs[i]).classList=arr[(i-3+arr.length)%arr.length];
+    }
+    arr2=[]
+    srcs2=['f1','f2','f3','f6','f9','f8','f7','f4'];
+    for (j=0; j<srcs2.length; j++) {
+      arr2.push(document.getElementById(srcs2[j]).classList[0]);
+    }
+    for (j=0; j<srcs2.length; j++) {
+      document.getElementById(srcs2[j]).classList=arr2[(j-2+arr2.length)%arr2.length];
+    }
+    if (dontcheck || nevercheck) {
+      dontcheck=false;
+    } else {
+      check()
+    }
+  }
+  function actA() {
+    var arr=[];
+    var srcs=['a3','a6','a9','c3','c6','c9','f3','f6','f9','e7','e4','e1'];
+    for (i=0; i<srcs.length; i++) {
+      arr.push(document.getElementById(srcs[i]).classList[0]);
+    }
+    for (i=0; i<srcs.length; i++) {
+      document.getElementById(srcs[i]).classList=arr[(i-3+arr.length)%arr.length];
+    }
+    arr2=[]
+    srcs2=['d1','d2','d3','d6','d9','d8','d7','d4'];
+    for (j=0; j<srcs2.length; j++) {
+      arr2.push(document.getElementById(srcs2[j]).classList[0]);
+    }
+    for (j=0; j<srcs2.length; j++) {
+      document.getElementById(srcs2[j]).classList=arr2[(j+2)%arr2.length];
+    }
+    if (dontcheck || nevercheck) {
+      dontcheck=false;
+    } else {
+      check()
+    }
+  }
+  function actB() {
+    var arr=[];
+    var srcs=['a2','a5','a8','c2','c5','c8','f2','f5','f8','e8','e5','e2'];
+    for (i=0; i<srcs.length; i++) {
+      arr.push(document.getElementById(srcs[i]).classList[0]);
+    }
+    for (i=0; i<srcs.length; i++) {
+      document.getElementById(srcs[i]).classList=arr[(i-3+arr.length)%arr.length];
+    }
+    if (dontcheck || nevercheck) {
+      dontcheck=false;
+    } else {
+      check()
+    }
+  }
+  function actC() {
+    var arr=[];
+    var srcs=['a1','a4','a7','c1','c4','c7','f1','f4','f7','e9','e6','e3'];
+    for (i=0; i<srcs.length; i++) {
+      arr.push(document.getElementById(srcs[i]).classList[0]);
+    }
+    for (i=0; i<srcs.length; i++) {
+      document.getElementById(srcs[i]).classList=arr[(i-3+arr.length)%arr.length];
+    }
+    arr2=[]
+    srcs2=['b1','b2','b3','b6','b9','b8','b7','b4'];
+    for (j=0; j<srcs2.length; j++) {
+      arr2.push(document.getElementById(srcs2[j]).classList[0]);
+    }
+    for (j=0; j<srcs2.length; j++) {
+      document.getElementById(srcs2[j]).classList=arr2[(j-2+arr2.length)%arr2.length];
+    }
+    if (dontcheck || nevercheck) {
+      dontcheck=false;
+    } else {
+      check()
+    }
+  }
+  function actD() {
+    var arr=[];
+    var srcs=['a9','a8','a7','b3','b6','b9','f1','f2','f3','d7','d4','d1'];
+    for (i=0; i<srcs.length; i++) {
+      arr.push(document.getElementById(srcs[i]).classList[0]);
+    }
+    for (i=0; i<srcs.length; i++) {
+      document.getElementById(srcs[i]).classList=arr[(i-3+arr.length)%arr.length];
+    }
+    arr2=[]
+    srcs2=['c1','c2','c3','c6','c9','c8','c7','c4'];
+    for (j=0; j<srcs2.length; j++) {
+      arr2.push(document.getElementById(srcs2[j]).classList[0]);
+    }
+    for (j=0; j<srcs2.length; j++) {
+      document.getElementById(srcs2[j]).classList=arr2[(j+2)%arr2.length];
+    }
+    if (dontcheck || nevercheck) {
+      dontcheck=false;
+    } else {
+      check()
+    }
+  }
+  function actE() {
+    var arr=[];
+    var srcs=['a6','a5','a4','b2','b5','b8','f4','f5','f6','d8','d5','d2'];
+    for (i=0; i<srcs.length; i++) {
+      arr.push(document.getElementById(srcs[i]).classList[0]);
+    }
+    for (i=0; i<srcs.length; i++) {
+      document.getElementById(srcs[i]).classList=arr[(i-3+arr.length)%arr.length];
+    }
+    if (dontcheck || nevercheck) {
+      dontcheck=false;
+    } else {
+      check()
+    }
+  }
+  function actF() {
+    var arr=[];
+    var srcs=['a3','a2','a1','b1','b4','b7','f7','f8','f9','d9','d6','d3'];
+    for (i=0; i<srcs.length; i++) {
+      arr.push(document.getElementById(srcs[i]).classList[0]);
+    }
+    for (i=0; i<srcs.length; i++) {
+      document.getElementById(srcs[i]).classList=arr[(i-3+arr.length)%arr.length];
+    }
+    arr2=[]
+    srcs2=['e1','e2','e3','e6','e9','e8','e7','e4'];
+    for (j=0; j<srcs2.length; j++) {
+      arr2.push(document.getElementById(srcs2[j]).classList[0]);
+    }
+    for (j=0; j<srcs2.length; j++) {
+      document.getElementById(srcs2[j]).classList=arr2[(j-2+arr2.length)%arr2.length];
+    }
+    if (dontcheck || nevercheck) {
+      dontcheck=false;
+    } else {
+      check()
+    }
+  }
+  function actG() {
+    var arr=[];
+    var srcs=['b7','b8','b9','c7','c8','c9','d7','d8','d9','e7','e8','e9'];
+    for (i=0; i<srcs.length; i++) {
+      arr.push(document.getElementById(srcs[i]).classList[0]);
+    }
+    for (i=0; i<srcs.length; i++) {
+      document.getElementById(srcs[i]).classList=arr[(i+3)%arr.length];
+    }
+    arr2=[]
+    srcs2=['f1','f2','f3','f6','f9','f8','f7','f4'];
+    for (j=0; j<srcs2.length; j++) {
+      arr2.push(document.getElementById(srcs2[j]).classList[0]);
+    }
+    for (j=0; j<srcs2.length; j++) {
+      document.getElementById(srcs2[j]).classList=arr2[(j+2)%arr2.length];
+    }
+    if (dontcheck || nevercheck) {
+      dontcheck=false;
+    } else {
+      check()
+    }
+  }
+  function actH() {
+    var arr=[];
+    var srcs=['b4','b5','b6','c4','c5','c6','d4','d5','d6','e4','e5','e6'];
+    for (i=0; i<srcs.length; i++) {
+      arr.push(document.getElementById(srcs[i]).classList[0]);
+    }
+    for (i=0; i<srcs.length; i++) {
+      document.getElementById(srcs[i]).classList=arr[(i+3)%arr.length];
+    }
+    if (dontcheck || nevercheck) {
+      dontcheck=false;
+    } else {
+      check()
+    }
+  }
+  function actI() {
+    var arr=[];
+    var srcs=['b1','b2','b3','c1','c2','c3','d1','d2','d3','e1','e2','e3'];
+    for (i=0; i<srcs.length; i++) {
+      arr.push(document.getElementById(srcs[i]).classList[0]);
+    }
+    for (i=0; i<srcs.length; i++) {
+      document.getElementById(srcs[i]).classList=arr[(i+3)%arr.length];
+    }
+    arr2=[]
+    srcs2=['a1','a2','a3','a6','a9','a8','a7','a4'];
+    for (j=0; j<srcs2.length; j++) {
+      arr2.push(document.getElementById(srcs2[j]).classList[0]);
+    }
+    for (j=0; j<srcs2.length; j++) {
+      document.getElementById(srcs2[j]).classList=arr2[(j-2+arr2.length)%arr2.length];
+    }
+    if (dontcheck || nevercheck) {
+      dontcheck=false;
+    } else {
+      check()
+    }
+  }
+  var shuffle_num=20;
+  var delayMillis=100;
+  function shuffle() {
+    var arr=[];
+    function shuffleOnce() {
+      var possible = ['1','2','3','4','5','6','7','8','9','A','B','C'];
+      // var possible = ['1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I'];
+      j=Math.floor(Math.random()*possible.length);
+      // console.log(j);
+      eval("act"+possible[j])();
+    }
+    for (i=0; i<shuffle_num; i++) {
+      setTimeout(function(){shuffleOnce();},delayMillis*i);
+    }
+  }
+ function config() {
+  alert('not yet implemented')
+/*
+   shuffle_num=eval(prompt('number of shuffles (default 20)'))
+   delayMillis=eval(prompt('milliseconds between each shuffle (default 100)'))
+   neverprompt=eval(prompt('avoid check if done on every move (default false)'))
+*/
+ }
+  </script>
+</head>
+
+<!-- python point editor
+def f(inp,offset_x,offset_y):
+  inA=inp.split('\n')
+  patt=re.compile("(.+)points=\"([-\.\d]+),([-\.\d]+) ([-\.\d]+),([-\.\d]+) ([-\.\d]+),([-\.\d]+)( ([-\.\d]+),([-\.\d]+))?(.+)")
+  for i in inA:
+    try:
+      n=re.search(patt,i)
+      start,end=n.group(1),n.group(11)
+      x1,y1=float(n.group(2)),float(n.group(3))
+      x2,y2=float(n.group(4)),float(n.group(5))
+      x3,y3=float(n.group(6)),float(n.group(7))
+      x4,y4=n.group(9),n.group(10)
+      try:
+        x4,y4=float(x4),float(y4)
+      except: pass
+      mkint=lambda x: (int(x) if int(x)==x else x)
+      x1+=offset_x
+      x2+=offset_x
+      x3+=offset_x
+      y1+=offset_y
+      y2+=offset_y
+      y3+=offset_y
+      x1,y1,x2,y2,x3,y3=mkint(x1),mkint(y1),mkint(x2),mkint(y2),mkint(x3),mkint(y3)
+      if x4:
+        x4,y4=mkint(x4+offset_x),mkint(y4+offset_y)
+      ans=start+'points="'+str(x1)+','+str(y1)+' '+str(x2)+','+str(y2)+' '+str(x3)+','+str(y3)
+      if x4:
+        ans+=' '+str(x4)+','+str(y4)
+      ans+=end
+      print ans
+    except Exception as e: print ""
+-->
+
+<body style="margin: 0px;">
+
+<div style="height:89vh; width:100vw; background-color: azure;">
+<svg height="500" width="500" style="margin-left: auto; margin-right:auto; display: block; " onload="init();">
+ <defs>
+   <linearGradient id="grad1" x1="0%" y1="0%" x2="59.490%" y2="58.605%">
+     <stop offset="0%" style="stop-color:black;stop-opacity:1" />
+     <stop offset="100%" style="stop-color:white;stop-opacity:1" />
+   </linearGradient>
+   <linearGradient id="grad2" x1="100%" y1="0%" x2="39.130%" y2="60.870%">
+     <stop offset="0%" style="stop-color:black;stop-opacity:1" />
+     <stop offset="100%" style="stop-color:white;stop-opacity:1" />
+   </linearGradient>
+   <linearGradient id="grad3" x1="100%" y1="0%" x2="0%" y2="0%">
+     <stop offset="0%" style="stop-color:black;stop-opacity:1" />
+     <stop offset="100%" style="stop-color:white;stop-opacity:1" />
+   </linearGradient>
+   <linearGradient id="grad4" x1="106%" y1="100%" x2="50%" y2="24.324%">
+     <stop offset="0%" style="stop-color:black;stop-opacity:1" />
+     <stop offset="100%" style="stop-color:white;stop-opacity:1" />
+   </linearGradient>
+   <linearGradient id="grad5" x1="-6%" y1="100%" x2="50%" y2="24.324%">
+     <stop offset="0%" style="stop-color:black;stop-opacity:1" />
+     <stop offset="100%" style="stop-color:white;stop-opacity:1" />
+   </linearGradient>
+   <linearGradient id="grad6" x1="0%" y1="0%" x2="100%" y2="0%">
+     <stop offset="0%" style="stop-color:black;stop-opacity:1" />
+     <stop offset="100%" style="stop-color:white;stop-opacity:1" />
+   </linearGradient>
+ </defs>
+ <style>
+   .a {fill:yellow;}
+   .b {fill:lime;}
+   .c {fill:orange;}
+   .d {fill:red;}
+   .e {fill:blue;}
+   .f {fill:magenta;}
+ </style>
+  <polygon points="140,107.5 190,137.5 140,167.5 90,137.5" style="stroke:black; stroke-width:1; " id="a1" />
+  <polygon points="195,74.5 245,104.5 195,134.5 145,104.5" style="stroke:black; stroke-width:1; " id="a2" />
+  <polygon points="250,41.5 300,71.5 250,101.5 200,71.5" style="stroke:black; stroke-width:1; " id="a3" />
+  <polygon points="195,140.5 245,170.5 195,200.5 145,170.5" style="stroke:black; stroke-width:1; " id="a4" />
+  <polygon points="250,107.5 300,137.5 250,167.5 200,137.5" style="stroke:black; stroke-width:1; " id="a5" />
+  <polygon points="305,74.5 355,104.5 305,134.5 255,104.5" style="stroke:black; stroke-width:1; " id="a6" />
+  <polygon points="250,173.5 300,203.5 250,233.5 200,203.5" style="stroke:black; stroke-width:1; " id="a7" />
+  <polygon points="305,140.5 355,170.5 305,200.5 255,170.5" style="stroke:black; stroke-width:1; " id="a8" />
+  <polygon points="360,107.5 410,137.5 360,167.5 310,137.5" style="stroke:black; stroke-width:1; " id="a9" />
+
+  <polygon points="90,137.5 140,167.5 140,227.5 90,197.5" style="stroke:black; stroke-width:1; " id="b1" />
+  <polygon points="145,170.5 195,200.5 195,260.5 145,230.5" style="stroke:black; stroke-width:1; " id="b2" />
+  <polygon points="200,203.5 250,233.5 250,293.5 200,263.5" style="stroke:black; stroke-width:1; " id="b3" />
+  <polygon points="90,203.5 140,233.5 140,293.5 90,263.5" style="stroke:black; stroke-width:1; " id="b4" />
+  <polygon points="145,236.5 195,266.5 195,326.5 145,296.5" style="stroke:black; stroke-width:1; " id="b5" />
+  <polygon points="200,269.5 250,299.5 250,359.5 200,329.5" style="stroke:black; stroke-width:1; " id="b6" />
+  <polygon points="90,269.5 140,299.5 140,359.5 90,329.5" style="stroke:black; stroke-width:1; " id="b7" />
+  <polygon points="145,302.5 195,332.5 195,392.5 145,362.5" style="stroke:black; stroke-width:1; " id="b8" />
+  <polygon points="200,335.5 250,365.5 250,425.5 200,395.5" style="stroke:black; stroke-width:1; " id="b9" />
+
+  <polygon points="250,233.5 300,203.5 300,263.5 250,293.5" style="stroke:black; stroke-width:1; " id="c1" />
+  <polygon points="305,200.5 355,170.5 355,230.5 305,260.5" style="stroke:black; stroke-width:1; " id="c2" />
+  <polygon points="360,167.5 410,137.5 410,197.5 360,227.5" style="stroke:black; stroke-width:1; " id="c3" />
+  <polygon points="250,299.5 300,269.5 300,329.5 250,359.5" style="stroke:black; stroke-width:1; " id="c4" />
+  <polygon points="305,266.5 355,236.5 355,296.5 305,326.5" style="stroke:black; stroke-width:1; " id="c5" />
+  <polygon points="360,233.5 410,203.5 410,263.5 360,293.5" style="stroke:black; stroke-width:1; " id="c6" />
+  <polygon points="250,365.5 300,335.5 300,395.5 250,425.5" style="stroke:black; stroke-width:1; " id="c7" />
+  <polygon points="305,332.5 355,302.5 355,362.5 305,392.5" style="stroke:black; stroke-width:1; " id="c8" />
+  <polygon points="360,299.5 410,269.5 410,329.5 360,359.5" style="stroke:black; stroke-width:1; " id="c9" />
+
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="d1" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="d2" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="d3" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="d4" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="d5" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="d6" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="d7" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="d8" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="d9" />
+  
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="e1" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="e2" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="e3" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="e4" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="e5" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="e6" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="e7" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="e8" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="e9" />
+  
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="f1" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="f2" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="f3" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="f4" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="f5" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="f6" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="f7" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="f8" />
+  <rect x="0" y="0" width="0" height="0" visibility="hidden" id="f9" />
+  
+  <polygon points="60,23.5 232.5,46 97.5,127" style="opacity:0.5; " fill="url(#grad1)" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="act1();act2();dontcheck=true;act3();" />
+  <polygon points="60,89.5 122.5,112 97.5,127" style="stroke:black; stroke-width:1; opacity:0.5; " id="action1" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="act1()" />
+  <polygon points="115,56.5 177.5,79 152.5,94" style="stroke:black; stroke-width:1; opacity:0.5; " id="action2" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="act2()" />
+  <polygon points="170,23.5 232.5,46 207.5,61" style="stroke:black; stroke-width:1; opacity:0.5; " id="action3" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="act3()" />
+
+  <polygon points="440,23.5 402.5,127 267.5,46" style="opacity:0.5; " fill="url(#grad2)" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="act4();act5();dontcheck=true;act6();" />
+  <polygon points="330,23.5 292.5,61 267.5,46" style="stroke:black; stroke-width:1; opacity:0.5; " id="action4" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="act4()" />
+  <polygon points="385,56.5 347.5,94 322.5,79" style="stroke:black; stroke-width:1; opacity:0.5; " id="action5" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="act5()" />
+  <polygon points="440,89.5 402.5,127 377.5,112" style="stroke:black; stroke-width:1; opacity:0.5; " id="action6" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="act6()" />
+
+  <polygon points="415,150 520,167.5 415,311.5" style="opacity:0.5; " fill="url(#grad3)" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="act7();act8();dontcheck=true;act9();" />
+  <polygon points="415,150.5 465,134.5 415,179.5" style="stroke:black; stroke-width:1; opacity:0.5; " id="action7" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="act7()" />
+  <polygon points="415,216.5 465,200.5 415,245.5" style="stroke:black; stroke-width:1; opacity:0.5; " id="action8" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="act8()" />
+  <polygon points="415,282.5 465,266.5 415,311.5" style="stroke:black; stroke-width:1; opacity:0.5; " id="action9" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="act9()" />
+
+  <polygon points="262.5,424 397.5,343 330,509.5" style="opacity:0.5; " fill="url(#grad4)" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="actA();actB();dontcheck=true;actC();" />
+  <polygon points="372.5,358 397.5,343 385,410.5" style="stroke:black; stroke-width:1; opacity:0.5; " id="actionA" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="actA()" />
+  <polygon points="317.5,391 342.5,376 330,443.5" style="stroke:black; stroke-width:1; opacity:0.5; " id="actionB" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="actB()" />
+  <polygon points="262.5,424 287.5,409 275,476.5" style="stroke:black; stroke-width:1; opacity:0.5; " id="actionC" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="actC()" />
+
+  <polygon points="102.5,343 237.5,424 170,509.5" style="opacity:0.5; " fill="url(#grad5)" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="actD();actE();dontcheck=true;actF();" />
+  <polygon points="212.5,409 237.5,424 225,476.5" style="stroke:black; stroke-width:1; opacity:0.5; " id="actionD" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="actD()" />
+  <polygon points="157.5,376 182.5,391 170,443.5" style="stroke:black; stroke-width:1; opacity:0.5; " id="actionE" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="actE()"" />
+  <polygon points="102.5,343 127.5,358 115,410.5" style="stroke:black; stroke-width:1; opacity:0.5; " id="actionF" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="actF()" />
+
+  <polygon points="-20,167.5 85,149.5 85,311.5" style="opacity:0.5; " fill="url(#grad6)" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="actG();actH();dontcheck=true;actI();" />
+  <polygon points="35,266.5 85,281.5 85,311.5" style="stroke:black; stroke-width:1; opacity:0.5; " id="actionG" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="actG()" />
+  <polygon points="35,200.5 85,215.5 85,245.5" style="stroke:black; stroke-width:1; opacity:0.5; " id="actionH" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="actH()" />
+  <polygon points="35,134.5 85,149.5 85,179.5" style="stroke:black; stroke-width:1; opacity:0.5; " id="actionI" onmouseover="hovershow(this)" onmouseout="hoverfade(this)" onclick="actI()" />
+
+</svg>
+</div>
+
+<div style="height:10vh; width:100vw; background-color: black;">
+
+<button style="display: inline; height: 100%; width: 33%; border-width:0px; padding-left: 0px; padding-right: 0px;" onclick="init()"><h2>Init</h2></button><!--
+--><button style="display: inline; height: 100%; width: 33%; border-width:0px; padding-left: 0px; padding-right: 0px; margin-left: 0.5%;" onclick="shuffle()"><h2>Shuffle</h2></button><!--
+--><button style="display: inline; height: 100%; width: 33%; border-width:0px; padding-left: 0px; padding-right: 0px; margin-left: 0.5%;" onclick="config();"><h2>Config</h2></button>
+
+</div>
+
+</body>
+</html>
